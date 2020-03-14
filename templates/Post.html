@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+
+{% block head%}
+<title>Post | Fruit-Blog</title>
+{% endblock head%}
+
+
+{% block content %}
+
+<div class="table-bordered">
+
+   <center>
+       <br>
+       <h2>UserName: {{current_user.username}}</h2>
+       <hr>
+       <h2>Add a Post</h2>
+       <form action="/Post" method="post">
+        Name:<input type="text" name ="fruit_name" id="fruit_name">
+        <br><br>
+        Content:<input type="text" name ="content" id="content">
+        <br>
+        <br>
+        <input type="submit" value="Add Fruit blog"><a href="{{ url_for('logout')}}"> Logout </a>
+    </form>
+       <hr>
+    <h1 style="text-align: center">Fruits-Blog</h1>
+       <hr>
+
+        {% for fruit in variable %}
+            {% if fruit.author== current_user%}
+               <h1>{{fruit.name}}</h1>
+
+                <p> <h3>{{fruit.content}}</h3> </p>
+               {{fruit.date_created}}
+               <a href="/delete/{{fruit.id}}">Delete</a>
+               <hr>
+            {%endif%}
+        {% endfor %}
+
+       <br>
+    </center>
+</div>
+
+{% endblock content%}

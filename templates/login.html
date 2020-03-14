@@ -1,0 +1,34 @@
+{% extends 'layout.html'%}
+{% block head%}
+<title>Login | Fruit-Blog</title>
+{%endblock head%}
+
+
+{% block content%}
+<center>
+    <h1>Personal Fruit-Blog</h1>
+    <form action="/login" method="post">
+        {{ form.hidden_tag()}}
+        <legend>Log In!!</legend>
+
+        <div>
+            {{ form.email.label()}}
+            {{ form.email}}
+        </div>
+        <div>
+            {{ form.password.label()}}
+            {{ form.password}}
+        </div>
+
+        <div>
+            {{ form.submit}}
+        </div>
+    </form>
+
+    <div>
+        <samll>
+            Need an account?? <a href="{{ url_for('register') }}"> sign Up Now!!</a>
+        </samll>
+    </div>
+</center>
+{% endblock content%}
